@@ -32,7 +32,7 @@ export const StyledSupportForm = styled.div`
   }
 `
 
-export const StyledUserDetails = styled.div`
+export const StyledSection = styled.div`
   display: grid;
   gap: 10px;
 `
@@ -40,6 +40,7 @@ export const StyledUserDetails = styled.div`
 export const StyledUserName = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: start;
   gap: 10px;
 `
 
@@ -50,6 +51,7 @@ export const StyledInput = styled.div`
 
   input {
     padding: 5px 8px;
+    height: 20px;
     border-radius: 10px;
     border: 1px solid #000;
   }
@@ -69,7 +71,7 @@ export const StyledInput = styled.div`
   }
 `
 
-export const StyledTicketDetails = styled.div`
-  display: grid;
-  gap: 10px
+export const StyledErrorMessage = styled.span`
+  color: #FF0000;
+  font-size: 14px;
 `

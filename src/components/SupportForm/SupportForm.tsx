@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { InputField } from "../InputField/InputField"
-import { StyledSupportForm, StyledUserDetails, StyledUserName, StyledInput, StyledTicketDetails } from "./style"
+import { SelectField } from "../SelectField/SelectField"
+import { categoryOptions, relatedProductOptions, priorityOptions } from "./options"
+import { StyledSupportForm, StyledSection, StyledUserName, StyledErrorMessage } from "./style"
 
 export const SupportForm = () => {
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: ""})
+  const [error, setError] = useState(false)
   console.log(formData)
 
   const handleOnChange = (e: React.ChangeEvent<any>) => {
@@ -13,7 +16,13 @@ export const SupportForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('form submitted')
+    if(!formData.firstName || !formData.lastName || !formData.email || !formData.organisation || !formData.subject || !formData.description){
+      setError(true)
+      console.log('Please fill out all required fields before submitting.')
+    }else{
+      setError(false)
+      console.log('form submitted') 
+    }
   }
 
   return (
@@ -22,56 +31,50 @@ export const SupportForm = () => {
       <form action="submit" onSubmit={handleSubmit}>
 
         {/* User details */}
-        <StyledUserDetails>
+        <StyledSection>
           <h3>User Details</h3>
           <StyledUserName>
-            <InputField label="First Name" type="text" name="firstName" onChange={handleOnChange}/> 
-            <InputField label="Last Name" type="text" name="lastName" onChange={handleOnChange}/> 
+            {/* first name field */}
+            <InputField label="First Name" type="text" name="firstName" onChange={handleOnChange} data={formData} error={error} /> 
+
+            {/* last name field */}
+            <InputField data={formData} label="Last Name" type="text" name="lastName" onChange={handleOnChange} error={error} /> 
+
           </StyledUserName>
-          <InputField label="Email" type="email" name="email" onChange={handleOnChange}/>
-          <InputField label="Organisation" type="text" name="organisation" onChange={handleOnChange}/>
-        </StyledUserDetails>
+
+          {/* email field */}
+          <InputField data={formData} label="Email" type="email" name="email" onChange={handleOnChange} error={error}/>
+
+          {/* organisation field */}
+          <InputField data={formData} label="Organisation" type="text" name="organisation" onChange={handleOnChange} error={error}/>
+        </StyledSection>
 
         {/* Ticket Details */}
-        <StyledTicketDetails>
+        <StyledSection>
           <h3>Ticket Details</h3>
-          <InputField label="Subject" type="text" name="subject" onChange={handleOnChange}/>
-          <InputField label="Description" type="text" name="description" onChange={handleOnChange}/>
+          {/* subject field */}
+          <InputField data={formData} label="Subject" type="text" name="subject" onChange={handleOnChange} error={error}/>
+
+          {/* description field */}
+          <InputField data={formData} label="Description" type="text" name="description" onChange={handleOnChange} error={error} />
+
+          {/* category field */}
+          <SelectField label="Category" name="category" onChange={handleOnChange} options={categoryOptions} />
+
+          {/* priority field */}
+          <SelectField label="Priority" name="priority" onChange={handleOnChange} options={priorityOptions} />
+
+          {/* related product field */}
+          <SelectField label="Related Product" name="relatedProduct" onChange={handleOnChange} options={relatedProductOptions} />
+
+           {/* attachments field */}
           {/* <StyledInput>
             <label>Attachments</label>
             <input type="file" id="attachments" multiple />
           </StyledInput> */}
-          <StyledInput>
-            <label>Category</label>
-            <select name="category" onChange={handleOnChange}>
-              <option value="">Select an option</option>
-              <option value="bug">Bug</option>
-              <option value="feature-request">Feature Request</option>
-              <option value="payment">Payment</option>
-              <option value="access-issue">Access Issue</option>
-            </select>
-          </StyledInput>
-          <StyledInput>
-            <label>Priority</label>
-            <select name="priority" onChange={handleOnChange}>
-              <option value="">Select an option (AI can auto-suggest this)</option>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-              <option value="critical">Critical</option>
-            </select>
-          </StyledInput>
-          <StyledInput>
-            <label>Related Product</label>
-            <select name="relatedProduct" onChange={handleOnChange}>
-              <option value="">Select an option </option>
-              <option value="dashboard">Dashboard</option>
-              <option value="api">API</option>
-              <option value="mobile-app">Mobile App</option>
-              <option value="user-accounts">User Accounts</option>
-            </select>
-          </StyledInput>
-        </StyledTicketDetails>
+        </StyledSection>
+
+        {error && <StyledErrorMessage>Please fill out all required fields before submitting.</StyledErrorMessage>}
         <button type="submit">Submit Form</button>
       </form>
     </StyledSupportForm>
