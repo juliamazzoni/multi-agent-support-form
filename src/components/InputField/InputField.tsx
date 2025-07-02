@@ -7,15 +7,11 @@ export const InputField = ({ label, type, name, onChange, data, error }: InputFi
       <label>{label}</label>
       {name === 'description' 
       ?
-      <textarea name={name} onChange={onChange}/> 
+      <textarea name={name} onChange={onChange} value={data[name]}/> 
       :
-      <input type={type} name={name} onChange={onChange}/>
+      <input type={type} name={name} onChange={onChange} value={data[name]}/>
       }
-      {!data[name] && error && (
-        <StyledErrorMessage>
-          This field is required
-        </StyledErrorMessage>
-        
+      {!data[name] && error && (<StyledErrorMessage>{label} is required</StyledErrorMessage>
       )}
     </StyledInput>
   )

@@ -9,4 +9,5 @@ export interface SelectFieldProps {
   name: string;
   onChange: (e: React.ChangeEvent<any>) => void;
   options: Options[];
+  data: { [key: string]: string };
 }

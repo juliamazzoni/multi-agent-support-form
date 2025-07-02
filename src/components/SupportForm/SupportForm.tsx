@@ -5,7 +5,7 @@ import { categoryOptions, relatedProductOptions, priorityOptions } from "./optio
 import { StyledSupportForm, StyledSection, StyledUserName, StyledErrorMessage } from "./style"
 
 export const SupportForm = () => {
-  const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: ""})
+  const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: "", category: "", priority: "", relatedProduct: ""})
   const [error, setError] = useState(false)
   console.log(formData)
 
@@ -21,6 +21,7 @@ export const SupportForm = () => {
       console.log('Please fill out all required fields before submitting.')
     }else{
       setError(false)
+      setFormData({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: "", category: "", priority: "", relatedProduct: ""})
       console.log('form submitted') 
     }
   }
@@ -59,13 +60,13 @@ export const SupportForm = () => {
           <InputField data={formData} label="Description" type="text" name="description" onChange={handleOnChange} error={error} />
 
           {/* category field */}
-          <SelectField label="Category" name="category" onChange={handleOnChange} options={categoryOptions} />
+          <SelectField data={formData} label="Category" name="category" onChange={handleOnChange} options={categoryOptions} />
 
           {/* priority field */}
-          <SelectField label="Priority" name="priority" onChange={handleOnChange} options={priorityOptions} />
+          <SelectField data={formData} label="Priority" name="priority" onChange={handleOnChange} options={priorityOptions} />
 
           {/* related product field */}
-          <SelectField label="Related Product" name="relatedProduct" onChange={handleOnChange} options={relatedProductOptions} />
+          <SelectField data={formData} label="Related Product" name="relatedProduct" onChange={handleOnChange} options={relatedProductOptions} />
 
            {/* attachments field */}
           {/* <StyledInput>
