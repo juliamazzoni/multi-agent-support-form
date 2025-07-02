@@ -28,6 +28,11 @@ export const StyledSupportForm = styled.div`
       color: #fff;
       background-color: #6256ff;
       font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #4f46e5; /* a slightly darker shade */
+      }
     }
   }
 `
