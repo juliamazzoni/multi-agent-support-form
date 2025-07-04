@@ -71,7 +71,7 @@ export const InputField = ({ label, type, name, onChange, data, error, setFormDa
         <input type={type} name={name} onChange={onChange} value={data[name]}/>  
       )
       }
-      {!data[name] && error && (<StyledErrorMessage>{label} is required</StyledErrorMessage>
+      { (name !== "category" && name !== "priority" && name !== "relatedProduct") && !data[name] && error && (<StyledErrorMessage>{label} is required</StyledErrorMessage>
       )}
       {name === "description" && (
         <StyledTwoColumns>
