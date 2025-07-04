@@ -1,13 +1,14 @@
+
 export interface FormData {
-  firstName?: string;
-  lastName?: string;
-  email?: string; 
-  organisation?: string;
-  subject?: string;
-  description?: string;
-  category?: string;
-  priority?: string;
-  relatedProduct?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  organisation: string;
+  subject: string;
+  description: string;
+  category: string;
+  priority: string;
+  relatedProduct: string;
 }
 
 
@@ -18,4 +19,5 @@ export interface InputFieldProps {
   onChange: (e: React.ChangeEvent<any>) => void;
   data: FormData;
   error: boolean;
+  setFormData?: (newData: FormData) => void;
 }

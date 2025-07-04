@@ -42,7 +42,7 @@ export const StyledSection = styled.div`
   gap: 10px;
 `
 
-export const StyledUserName = styled.div`
+export const StyledTwoColumns = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: start;

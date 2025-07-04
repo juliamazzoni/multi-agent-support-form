@@ -1,13 +1,11 @@
 import { useState } from "react"
 import { InputField } from "../InputField/InputField"
-import { SelectField } from "../SelectField/SelectField"
-import { categoryOptions, relatedProductOptions, priorityOptions } from "./options"
-import { StyledSupportForm, StyledSection, StyledUserName, StyledErrorMessage } from "./style"
+import { StyledSupportForm, StyledSection, StyledTwoColumns, StyledErrorMessage } from "./style"
 
 export const SupportForm = () => {
   const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: "", category: "", priority: "", relatedProduct: ""})
   const [error, setError] = useState(false)
-  console.log(formData)
+  console.log(formData, "form data")
 
   const handleOnChange = (e: React.ChangeEvent<any>) => {
     const { name, value } = e.target
@@ -21,7 +19,6 @@ export const SupportForm = () => {
       console.log('Please fill out all required fields before submitting.')
     }else{
       setError(false)
-      setFormData({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: "", category: "", priority: "", relatedProduct: ""})
       console.log('form submitted') 
     }
   }
@@ -34,45 +31,38 @@ export const SupportForm = () => {
         {/* User details */}
         <StyledSection>
           <h3>User Details</h3>
-          <StyledUserName>
+          <StyledTwoColumns>
             {/* first name field */}
             <InputField label="First Name" type="text" name="firstName" onChange={handleOnChange} data={formData} error={error} /> 
-
             {/* last name field */}
             <InputField data={formData} label="Last Name" type="text" name="lastName" onChange={handleOnChange} error={error} /> 
-
-          </StyledUserName>
+          </StyledTwoColumns>
 
           {/* email field */}
-          <InputField data={formData} label="Email" type="email" name="email" onChange={handleOnChange} error={error}/>
+          <InputField data={formData} label="Email" type="email" name="email" onChange={handleOnChange} error={error} />
 
           {/* organisation field */}
-          <InputField data={formData} label="Organisation" type="text" name="organisation" onChange={handleOnChange} error={error}/>
+          <InputField data={formData} label="Organisation" type="text" name="organisation" onChange={handleOnChange} error={error} />
         </StyledSection>
 
         {/* Ticket Details */}
         <StyledSection>
           <h3>Ticket Details</h3>
           {/* subject field */}
-          <InputField data={formData} label="Subject" type="text" name="subject" onChange={handleOnChange} error={error}/>
+          <InputField data={formData} label="Subject" type="text" name="subject" onChange={handleOnChange} error={error} setFormData={setFormData}/>
 
           {/* description field */}
-          <InputField data={formData} label="Description" type="text" name="description" onChange={handleOnChange} error={error} />
+          <InputField data={formData} label="Description" type="text" name="description" onChange={handleOnChange} error={error} setFormData={setFormData}/>
 
           {/* category field */}
-          <SelectField data={formData} label="Category" name="category" onChange={handleOnChange} options={categoryOptions} />
+          <InputField data={formData} label="Category" type="text" name="category" onChange={handleOnChange} error={error}/>
 
           {/* priority field */}
-          <SelectField data={formData} label="Priority" name="priority" onChange={handleOnChange} options={priorityOptions} />
+          <InputField data={formData} label="Priority" type="text" name="priority" onChange={handleOnChange} error={error}/>
 
           {/* related product field */}
-          <SelectField data={formData} label="Related Product" name="relatedProduct" onChange={handleOnChange} options={relatedProductOptions} />
+          <InputField data={formData} label="Related Product" type="text" name="relatedProduct" onChange={handleOnChange} error={error}/>
 
-           {/* attachments field */}
-          {/* <StyledInput>
-            <label>Attachments</label>
-            <input type="file" id="attachments" multiple />
-          </StyledInput> */}
         </StyledSection>
 
         {error && <StyledErrorMessage>Please fill out all required fields before submitting.</StyledErrorMessage>}
