@@ -2,7 +2,7 @@ import { StyledInput } from "../SupportForm/style";
 import type { SelectFieldProps } from "./types";
 import { buildTestToken, useGumnutDoc, GumnutData } from "@gumnutdev/react"
 
-export const SelectField = ({ label, name, onChange, options, data }: SelectFieldProps) => {
+export const SelectField = ({ label, name, options }: SelectFieldProps) => {
   const getToken = () => buildTestToken("some-fake-uid")
   const scope = useGumnutDoc({ getToken, docId: "1" })
 

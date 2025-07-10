@@ -33,13 +33,9 @@ export const InputField = ({ label, type, name, onChange, data, error, setFormDa
     const interval = setInterval(() => {
       const subject = scope.doc.root().value('subject')?.contents?.();
       const description = scope.doc.root().value('description')?.contents?.();
-      const category = scope.doc.root().value('category')?.contents?.();
-      const priority = scope.doc.root().value('priority')?.contents?.();
-      const relatedProduct = scope.doc.root().value('relatedProduct')?.contents?.();
       
-
-      if (subject !== data.subject || description !== data.description || category !== data.category || priority !== data.priority || relatedProduct !== data.relatedProduct) {
-        setFormData({ ...data, subject, description, category, priority, relatedProduct });
+      if (subject !== data.subject || description !== data.description) {
+        setFormData({ ...data, subject, description });
       }
     }, 500);
 
@@ -49,7 +45,7 @@ export const InputField = ({ label, type, name, onChange, data, error, setFormDa
   return (
     <StyledInput>
       <label>{label}</label>
-      {name === 'description' || name === 'subject' || name === 'category' || name === 'priority' || name === 'relatedProduct' 
+      {name === 'description' || name === 'subject'
       ? 
       (
         <GumnutText
@@ -71,7 +67,7 @@ export const InputField = ({ label, type, name, onChange, data, error, setFormDa
         <input type={type} name={name} onChange={onChange} value={data[name]}/>  
       )
       }
-      { (name !== "category" && name !== "priority" && name !== "relatedProduct") && !data[name] && error && (<StyledErrorMessage>{label} is required</StyledErrorMessage>
+      {!data[name] && error && (<StyledErrorMessage>{label} is required</StyledErrorMessage>
       )}
       {name === "description" && (
         <StyledTwoColumns>

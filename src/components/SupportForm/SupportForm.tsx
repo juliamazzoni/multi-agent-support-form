@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { InputField } from "../InputField/InputField"
 import { StyledSupportForm, StyledSection, StyledTwoColumns, StyledErrorMessage } from "./style"
+import { SelectField } from "../SelectField/SelectField"
+import { categoryOptions, priorityOptions, relatedProductOptions } from "./options"
 
 export const SupportForm = () => {
-  const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: "", category: "", priority: "", relatedProduct: ""})
+  const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: ""})
   const [error, setError] = useState(false)
   console.log(formData, "form data")
 
@@ -14,7 +16,7 @@ export const SupportForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if(!formData.firstName || !formData.lastName || !formData.email || !formData.organisation || !formData.subject || !formData.description){
+    if(!formData.firstName || !formData.lastName || !formData.email){
       setError(true)
       console.log('Please fill out all required fields before submitting.')
     }else{
@@ -55,14 +57,13 @@ export const SupportForm = () => {
           <InputField data={formData} label="Description" type="text" name="description" onChange={handleOnChange} error={error} setFormData={setFormData}/>
 
           {/* category field */}
-          <InputField data={formData} label="Category" type="text" name="category" onChange={handleOnChange} error={error}/>
-
+          <SelectField data={formData} label="Category" name="category" onChange={handleOnChange} options={categoryOptions}/>
+  
           {/* priority field */}
-          <InputField data={formData} label="Priority" type="text" name="priority" onChange={handleOnChange} error={error}/>
+          <SelectField data={formData} label="Priority" name="priority" onChange={handleOnChange} options={priorityOptions}/>
 
           {/* related product field */}
-          <InputField data={formData} label="Related Product" type="text" name="relatedProduct" onChange={handleOnChange} error={error}/>
-
+          <SelectField data={formData} label="Related Product" name="relatedProduct" onChange={handleOnChange} options={relatedProductOptions}/>
         </StyledSection>
 
         {error && <StyledErrorMessage>Please fill out all required fields before submitting.</StyledErrorMessage>}

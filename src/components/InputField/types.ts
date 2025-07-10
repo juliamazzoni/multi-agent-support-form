@@ -6,9 +6,6 @@ export interface FormData {
   organisation: string;
   subject: string;
   description: string;
-  category: string;
-  priority: string;
-  relatedProduct: string;
 }
 
 
