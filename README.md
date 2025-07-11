@@ -2,7 +2,7 @@
 
 This is a simple and collaborative support ticket form built with **React**, **TypeScript**, **Styled Components**, and powered by **Gumnut**’s real-time collaboration platform and AI agent integration.
 
-![Alt text](support-ticket-form.png)
+![Support ticket form image](Support-ticket-form.png)
 
 ---
 
@@ -53,4 +53,4 @@ npm install
 npm run dev
 ```
 
-### [click here]() to see my live project!
+### [click here](https://multi-agent-support-form.surge.sh/) to see my live project!
