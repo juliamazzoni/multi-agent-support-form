@@ -3,8 +3,9 @@ import { InputField } from "../InputField/InputField"
 import { StyledSupportForm, StyledSection, StyledTwoColumns, StyledErrorMessage } from "./style"
 import { SelectField } from "../SelectField/SelectField"
 import { categoryOptions, priorityOptions, relatedProductOptions } from "./options"
+import type { SupportFormProps } from "./types"
 
-export const SupportForm = () => {
+export const SupportForm = ({ setToast }: SupportFormProps) => {
   const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", organisation: "", subject: "", description: ""})
   const [error, setError] = useState(false)
   console.log(formData, "form data")
@@ -21,6 +22,10 @@ export const SupportForm = () => {
       console.log('Please fill out all required fields before submitting.')
     }else{
       setError(false)
+      setToast(true)
+      setTimeout(() => {
+        setToast(false)
+      }, 3000);
       console.log('form submitted') 
     }
   }
