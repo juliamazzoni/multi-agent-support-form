@@ -71,8 +71,8 @@ export const InputField = ({ label, type, name, onChange, data, error, setFormDa
       )}
       {name === "description" && (
         <StyledTwoColumns>
-          <button onClick={handleRewriteAgent}>Rewrite</button>
-          <button onClick={handleAutoClassifierAgent}>Auto Classifier</button>
+          <button onClick={handleRewriteAgent}>Rewrite Description</button>
+          <button onClick={handleAutoClassifierAgent}>Auto Classify</button>
         </StyledTwoColumns>
           )}
       

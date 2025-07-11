@@ -1,69 +1,56 @@
-# React + TypeScript + Vite
+# 🛠️ Support Ticket Form with AI Collaboration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple and collaborative support ticket form built with **React**, **TypeScript**, **Styled Components**, and powered by **Gumnut**’s real-time collaboration platform and AI agent integration.
 
-Currently, two official plugins are available:
+![Alt text](support-ticket-form.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Real-time Collaboration
+Built using **Gumnut**, this form supports **live, multiplayer editing** on some input fields. Multiple users can edit the same ticket at once — no refresh, no conflicts.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### AI Agents Integration
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+#### ✍️ Rewrite Agent
+- Rewrites the ticket description to be more engaging, grammatically correct, and easier to understand.
+- Preserves the original tone and intent of the user's input.
+- Triggered via a dedicated **"Rewrite Description"** button.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### 🧠 Classification Agent
+- Analyzes the description and classifies the ticket by selecting an option for **category**, **priority**, and **related product** from the dropdown.
+- Triggered via a **"Auto Classify"** button.
+
+---
+
+## 🔧 Tech Stack
+
+- **React**
+- **TypeScript**
+- **Styled Components**
+- **Gumnut** for real-time collaboration and AI agent APIs
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/juliamazzoni/multi-agent-support-form.git
+   cd multi-agent-support-form
+   ```
+
+---
+
+## 🔧 Install Dependencies and Start the Development Server 
+
+To install project dependencies and start the development server, run:
+
+```bash
+npm install
+
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### [click here]() to see my live project!

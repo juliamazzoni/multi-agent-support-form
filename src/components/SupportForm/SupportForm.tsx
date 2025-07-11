@@ -15,8 +15,7 @@ export const SupportForm = ({ setToast }: SupportFormProps) => {
     setFormData({...formData, [name]: value})
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSubmit = () => {
     if(!formData.firstName || !formData.lastName || !formData.email){
       setError(true)
       console.log('Please fill out all required fields before submitting.')
@@ -33,8 +32,6 @@ export const SupportForm = ({ setToast }: SupportFormProps) => {
   return (
     <StyledSupportForm>
       <h2>Support Ticket Form</h2>
-      <form action="submit" onSubmit={handleSubmit}>
-
         {/* User details */}
         <StyledSection>
           <h3>User Details</h3>
@@ -72,8 +69,7 @@ export const SupportForm = ({ setToast }: SupportFormProps) => {
         </StyledSection>
 
         {error && <StyledErrorMessage>Please fill out all required fields before submitting.</StyledErrorMessage>}
-        <button type="submit">Submit Form</button>
-      </form>
+        <button onClick={handleSubmit}>Submit Form</button>
     </StyledSupportForm>
   )
 }

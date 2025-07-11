@@ -20,6 +20,7 @@ export const StyledSupportForm = styled.div`
   form {
     display: grid;
     gap: 45px;
+    }
 
     button {
       padding: 15px 0;
@@ -33,7 +34,6 @@ export const StyledSupportForm = styled.div`
       &:hover {
         background-color: #4f46e5; /* a slightly darker shade */
       }
-    }
   }
 `
 
